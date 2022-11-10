@@ -16,7 +16,6 @@ const App = () => {
   };
   return (
     <>
-      {/* <div className="container mx-auto bg-black text-white">UMAIR</div> */}
       <div className="container mx-auto bg-hero-pattern bg-no-repeat bg-cover py-60">
         <div className=" ml-12 mt-10 mb-10 rounded-2xl bg-white w-[50%] h-[150px]">
           <p className=" text-sm font-serif text-black pt-2 px-3 py-4 sm:text-bse font-bold md:text-lg  lg:text-xl">
