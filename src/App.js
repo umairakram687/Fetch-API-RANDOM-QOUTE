@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from "react";
+import axios from "axios";
+import "./App.css";
+const App = () => {
+  const [advice, setAdvice] = useState("There is A Best Advice for you");
+  const fetchdevice = () => {
+    axios
+      .get("https://api.adviceslip.com/advice")
+      .then((result) => {
+        const advice = result.data.slip.advice;
+        setAdvice(advice);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      {/* <div className="container mx-auto bg-black text-white">UMAIR</div> */}
+      <div className="container mx-auto bg-hero-pattern bg-no-repeat bg-cover py-60">
+        <div className=" ml-12 mt-10 mb-10 rounded-2xl bg-white w-[50%] h-[150px]">
+          <p className=" text-sm font-serif text-black pt-2 px-3 py-4 sm:text-bse font-bold md:text-lg  lg:text-xl">
+            {advice}
+          </p>
+        </div>
+        <button
+          onClick={fetchdevice}
+          className="bg-purple-600 mb-6 text-white ml-12 hover:bg-black hover:text-white border-2 border-transparent hover:border-2 hover:border-black text-sm font-normal uppercase px-4 py-1 rounded-2xl"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Next Advice
+        </button>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
